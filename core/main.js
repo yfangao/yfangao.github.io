@@ -11,7 +11,7 @@ const app = {
         document.getElementById('js-subtitle').innerText = CONFIG.subtitle;
 
         const socialsTarget = document.getElementById('js-socials');
-        // ✨ 定义哪些 ID 需要执行“滑出”效果
+        // 需要执行滑出效果的ID
         const slideIds = ['email', 'local']; 
 
         if (socialsTarget && CONFIG.socials) {
@@ -41,12 +41,11 @@ const app = {
         }
     },
 
-    // ✨ 升级后的通用滑动函数
+    // 通用滑动函数
     toggleSlideBox(id) {
         const box = document.getElementById(`box-${id}`);
         const isVisible = box.classList.contains('show');
         
-        // 先关闭其他已经打开的盒子（可选，让页面更整洁）
         document.querySelectorAll('.email-display.show').forEach(openBox => {
             if(openBox.id !== `box-${id}`) {
                 gsap.to(openBox, { height: 0, opacity: 0, marginTop: 0, duration: 0.3 });
@@ -69,7 +68,6 @@ const app = {
     },
 
     async switchTab(id) {
-        // ... 保持你之前的 switchTab 代码不变
         const target = document.getElementById('render-target');
         const config = CONFIG.menu.find(m => m.id === id);
         if (!config) return;

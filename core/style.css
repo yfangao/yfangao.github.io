@@ -1,76 +1,178 @@
+/* ============================================================
+   全局变量
+   ============================================================ */
 :root {
-    --bg-candy: linear-gradient(45deg, #fff1f2 0%, #e0f2fe 50%, #fef9c3 100%);
-    --accent: #d4a373;
-    --text-main: #4a3f35;
+    /* 主色调 */
+    --bg-page: linear-gradient(45deg, #fff1f2 0%, #e0f2fe 50%, #fef9c3 100%);
+    --bg-sidebar: #ffffff;      /* 侧边栏：纯白实色，不再是毛玻璃 */
+    --bg-main: #ffffff;         /* 内容区：纯白实色 */
+    --accent: #d4a373;          /* 主题金 */
+    
+    /* 文字颜色 */
+    --text-main: #334155;       /* 主文字 */
+    --text-muted: #64748b;      /* 辅助字 */
+    
+    /* 尺寸 */
+    --sidebar-width: 300px;
+    --hero-height: 220px;       /* 稍微调高一点，毛玻璃更有质感 */
 }
 
-body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; background: var(--bg-candy); overflow: hidden; }
+/* ============================================================
+   基础重置
+   ============================================================ */
+* { box-sizing: border-box; }
+body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    background: var(--bg-page);
+    color: var(--text-main);
+    overflow: hidden;
+}
 
+/* ============================================================
+   核心布局 (App Container)
+   ============================================================ */
 .app-container {
-    display: grid; grid-template-columns: 300px 1fr;
-    width: 100%; max-width: 1440px; height: 100vh; margin: 0 auto;
-    background: rgba(255, 252, 245, 0.7); backdrop-filter: blur(10px);
-}
-
-/* 侧边栏 */
-.sidebar { padding: 60px 30px; display: flex; flex-direction: column; align-items: center; border-right: 1px solid rgba(0,0,0,0.05); }
-.avatar { width: 110px; height: 110px; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 10px; object-fit: cover;}
-.social-container { width: 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
-.social-btn { display: flex; align-items: center; gap: 10px; padding: 10px 15px; background: #fff; border-radius: 10px; text-decoration: none; color: var(--text-main); font-size: 14px; border: 1px solid #eee; transition: 0.3s; }
-.social-btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
-
-/* 主体区域 */
-.main-content { background: #fff; display: flex; flex-direction: column; overflow: hidden; position: relative; }
-.hero-banner { width: 100%; height: 180px; background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); border-bottom: 1px solid #f3f4f6; flex-shrink: 0; }
-
-.top-bar { height: 70px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(5px); z-index: 10; border-bottom: 1px solid #f3f4f6; }
-.view-switcher { display: flex; gap: 5px; background: #f1f5f9; padding: 5px; border-radius: 12px; }
-.switch-btn { padding: 8px 20px; border: none; background: transparent; cursor: pointer; border-radius: 8px; font-weight: 600; color: #64748b; transition: 0.3s; }
-.switch-btn.active { background: #fff; color: var(--accent); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-
-/* 内容区 */
-.scroll-area { flex: 1; overflow-y: auto; background: #fafafa; }
-.content-wrapper { max-width: 850px; margin: 40px auto; padding: 0 40px 100px; }
-
-/* 🔴 重要：这里不要加任何 transition，否则会和 GSAP 动画冲突导致生硬 */
-#render-target {
-    will-change: transform, opacity;
-}
-
-/* Markdown 样式稍微美化 */
-.markdown-body h1 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px; }
-.markdown-body h3 { color: var(--accent); background: rgba(212, 163, 115, 0.1); display: inline-block; padding: 2px 10px; border-radius: 5px; margin-top: 25px; }
-
-/* core/style.css 补充部分 */
-
-.social-item {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
     width: 100%;
+    max-width: 1440px;
+    height: 100vh;
+    margin: 0 auto;
+    background: var(--bg-sidebar); /* 整体背景设为实色 */
+    box-shadow: 0 0 40px rgba(0,0,0,0.05); /* 加个阴影增强层次感 */
+}
+
+/* ============================================================
+   侧边栏
+   ============================================================ */
+.sidebar {
+    padding: 60px 30px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    border-right: 1px solid rgba(0,0,0,0.05);
+    background: var(--bg-sidebar); 
+}
+
+.avatar {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.social-container { width: 100%; display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+.social-item { width: 100%; display: flex; flex-direction: column; }
+
+.social-btn {
+    display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+    background: #f8fafc; /* 浅灰背景 */
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
 }
 
 .email-display {
-    height: 0;
-    opacity: 0;
+    height: 0; opacity: 0; overflow: hidden;
+    background: #f1f5f9;
+    border-radius: 10px; font-size: 12px; color: var(--accent);
+    text-align: center; transition: all 0.3s;
+}
+.email-display.show { padding: 10px; margin-top: 8px; height: auto; opacity: 1; border: 1px solid rgba(212, 163, 115, 0.2); }
+
+/* ============================================================
+   右侧主体Banner
+   ============================================================ */
+.main-content {
+    background: var(--bg-main);
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    background: #f8fafc;
-    border-radius: 8px;
-    font-size: 12px;
-    color: var(--accent);
-    text-align: center;
-    word-break: break-all;
-    padding: 0 10px;
-    border: 1px solid transparent;
-    transition: border 0.3s;
+    position: relative;
 }
 
-.email-display.show {
-    padding: 8px 10px;
-    border: 1px solid rgba(212, 163, 115, 0.2);
+.hero-banner {
+    width: 100%;
+    height: var(--hero-height);
+    background-color: #ffffff; /* 💡 纯白底色 */
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-bottom: 1px solid #f1f5f9;
 }
 
-/* 移除 Homepage 后的间距微调 */
-.social-container {
-    margin-top: 20px;
-    gap: 15px; /* 让剩下的两个按钮间距大一点，显得不空 */
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('../Materials/hero.png'); 
+    background-size: cover;
+    background-position: center;
+    /* 透明度 */
+    opacity: 0.2; 
+    z-index: 1;
+}
+
+/* 顶部导航条 */
+.top-bar {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.view-switcher { display: flex; gap: 5px; background: #f1f5f9; padding: 5px; border-radius: 12px; }
+.switch-btn {
+    padding: 8px 24px; border: none; background: transparent;
+    cursor: pointer; border-radius: 8px; font-weight: 600;
+    color: var(--text-muted); transition: 0.3s;
+}
+.switch-btn.active { background: #fff; color: var(--accent); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+/* ============================================================
+   滚动区与 Markdown
+   ============================================================ */
+.scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    background: #ffffff; /* 确保背景是纯白 */
+}
+
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 40px 100px;
+}
+
+#render-target { will-change: transform, opacity; }
+
+/* Markdown 样式 */
+.markdown-body { line-height: 1.7; font-size: 16px; color: #1e293b; }
+.markdown-body h1 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px; font-weight: 800; }
+.markdown-body h3 { 
+    color: var(--accent); background: rgba(212, 163, 115, 0.08); 
+    display: inline-block; padding: 4px 12px; border-radius: 8px; margin-top: 30px; 
+}
+
+/* ============================================================
+   响应式
+   ============================================================ */
+@media (max-width: 900px) {
+    .app-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
+    .sidebar { border-right: none; border-bottom: 1px solid #eee; }
 }
