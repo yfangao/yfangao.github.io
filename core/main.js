@@ -11,44 +11,54 @@ const app = {
         document.getElementById('js-subtitle').innerText = CONFIG.subtitle;
 
         const socialsTarget = document.getElementById('js-socials');
+        // ✨ 定义哪些 ID 需要执行“滑出”效果
+        const slideIds = ['email', 'local']; 
+
         if (socialsTarget && CONFIG.socials) {
             socialsTarget.innerHTML = CONFIG.socials.map(item => {
-                // 如果是 email，我们不给 href，而是给一个特殊的 class
-                const isEmail = item.id === 'email';
+                const isSlide = slideIds.includes(item.id);
                 return `
                     <div class="social-item">
-                        <a href="${isEmail ? 'javascript:void(0)' : item.url}" 
-                           class="social-btn ${isEmail ? 'js-email-btn' : ''}" 
-                           target="${isEmail ? '' : '_blank'}">
+                        <a href="${isSlide ? 'javascript:void(0)' : item.url}" 
+                        class="social-btn ${isSlide ? 'js-slide-btn' : ''}" 
+                        data-id="${item.id}"
+                        target="${isSlide ? '' : '_blank'}">
                             <span class="icon">${item.icon}</span>
                             <span class="label">${item.label}</span>
                         </a>
-                        ${isEmail ? `<div class="email-display" id="js-email-box">${item.url}</div>` : ''}
+                        ${isSlide ? `<div class="email-display" id="box-${item.id}">${item.url}</div>` : ''}
                     </div>
                 `;
             }).join('');
 
-            // 绑定 Email 点击事件
-            const emailBtn = document.querySelector('.js-email-btn');
-            if (emailBtn) {
-                emailBtn.onclick = (e) => {
-                    e.preventDefault();
-                    this.toggleEmail();
+            // 绑定点击事件给所有需要滑出的按钮
+            document.querySelectorAll('.js-slide-btn').forEach(btn => {
+                btn.onclick = (e) => {
+                    const id = btn.getAttribute('data-id');
+                    this.toggleSlideBox(id);
                 };
-            }
+            });
         }
     },
 
-    // ✨ 新增：控制邮箱滑出
-    toggleEmail() {
-        const box = document.getElementById('js-email-box');
+    // ✨ 升级后的通用滑动函数
+    toggleSlideBox(id) {
+        const box = document.getElementById(`box-${id}`);
         const isVisible = box.classList.contains('show');
         
+        // 先关闭其他已经打开的盒子（可选，让页面更整洁）
+        document.querySelectorAll('.email-display.show').forEach(openBox => {
+            if(openBox.id !== `box-${id}`) {
+                gsap.to(openBox, { height: 0, opacity: 0, marginTop: 0, duration: 0.3 });
+                openBox.classList.remove('show');
+            }
+        });
+
         if (!isVisible) {
             box.classList.add('show');
             gsap.fromTo(box, 
                 { height: 0, opacity: 0, marginTop: 0 }, 
-                { height: 'auto', opacity: 1, marginTop: 10, duration: 0.4, ease: "back.out(1.7)" }
+                { height: 'auto', opacity: 1, marginTop: 10, duration: 0.4, ease: "back.out(1.2)" }
             );
         } else {
             gsap.to(box, { 
