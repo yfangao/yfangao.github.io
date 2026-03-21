@@ -1,5 +1,4 @@
-# Yifan Gao
----
+# Yifan Gao (高忆凡)
 
 Hi! Glad you are here. I am an incoming graduate student starting this fall, and I will be working with Prof. Muyi Sun. During my undergrad, I focused on medical image analysis, and I am now exploring a shift toward human-computer interaction.
 Besides research, I am probably listening to music, collecting CDs, watching anime, or planning my next trip. These are also the things that help me relax and stay curious, both in life and in research.
@@ -31,7 +30,7 @@ Here, I am be sharing my academic journey and research along the way. I will als
 ### 📝 Publications
 
 [1] **SemiTooth: a Generalizable Semi-Supervised Framework for Multi-Source Tooth Segmentation**
- Muyi Sun*, **<u>Yifan Gao*</u>**, Ziang Jia, Xingqun Qi, Qianli Zhang, Qian Liu, Tianzheng Deng<sup>†</sup>.  
+ Muyi Sun*, *<u>Yifan Gao*</u>*, Ziang Jia, Xingqun Qi, Qianli Zhang, Qian Liu, Tianzheng Deng<sup>†</sup>.  
 *International Conference on Acoustics, Speech, and Signal Processing, ICASSP 2026* <span style="float:right;">`Conference`</span>
 
 [2] **Self-Evolving Signal Refinement for Semi-Supervised Tooth Segmentation** 
@@ -39,7 +38,7 @@ Here, I am be sharing my academic journey and research along the way. I will als
 *IEEE International Conference on Network Intelligence and Digital Content, ICNIDC 2025* <span style="float:right;">`Conference`</span>
 
 [3] **Exploring Generalizable Distillation for Efficient Medical Image Segmentation** 
-Xingqun Qi*, Zhuojie Wu, Wenxuan Zou, Min Ren, **<u>Yifan Gao*</u>**, Muyi Sun, Shanghang Zhang, Caifeng Shan , Zhenan Sun<sup>†</sup>.  
+Xingqun Qi*, Zhuojie Wu, Wenxuan Zou, Min Ren, *<u>Yifan Gao</u>*, Muyi Sun, Shanghang Zhang, Caifeng Shan , Zhenan Sun<sup>†</sup>.  
 *IEEE Journal of Biomedical and Health Informatics, JBHI*  <span style="float:right;">`Journal`</span> 
 
 ---
