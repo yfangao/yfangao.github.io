@@ -7,13 +7,17 @@ const app = {
     },
 
     renderProfile() {
-        // 渲染基本信息
+        // 1. 渲染基础信息
         document.getElementById('js-avatar').src = CONFIG.avatar;
         document.getElementById('js-name').innerText = CONFIG.name;
         document.getElementById('js-subtitle').innerText = CONFIG.subtitle;
 
-        // ✨ 重点：渲染左侧按钮逻辑
+        // 2. 渲染社交链接 (这一步没生效就是按钮不显示的原因)
         const socialsTarget = document.getElementById('js-socials');
+        
+        // 调试：如果控制台没打印下面这行，说明逻辑没跑到这里
+        console.log("正在尝试渲染社交按钮...", CONFIG.socials); 
+
         if (socialsTarget && CONFIG.socials) {
             socialsTarget.innerHTML = CONFIG.socials.map(item => `
                 <a href="${item.url}" class="social-btn" target="_blank">
