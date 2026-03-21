@@ -9,6 +9,17 @@ const app = {
         document.getElementById('js-avatar').src = CONFIG.avatar;
         document.getElementById('js-name').innerText = CONFIG.name;
         document.getElementById('js-subtitle').innerText = CONFIG.subtitle;
+
+        // 社交链接按钮
+        const socialsTarget = document.getElementById('js-socials');
+        if (socialsTarget && CONFIG.socials) {
+            socialsTarget.innerHTML = CONFIG.socials.map(item => `
+                <a href="${item.url}" class="social-btn" target="_blank">
+                    <span class="icon">${item.icon}</span>
+                    <span class="label">${item.label}</span>
+                </a>
+            `).join('');
+        }
     },
 
     async switchTab(id) {
