@@ -1,0 +1,43 @@
+/* style.css */
+:root {
+    --bg-candy: linear-gradient(45deg, #fff1f2 0%, #e0f2fe 50%, #fef9c3 100%);
+    --content-bg: #ffffff;
+    --sidebar-bg: rgba(255, 252, 245, 0.7);
+    --accent: #d4a373;
+    --text-main: #4a3f35;
+    --text-sub: #8e8477;
+}
+
+body, html {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+    font-family: -apple-system, "Noto Sans SC", sans-serif;
+    background: var(--bg-candy);
+    color: var(--text-main);
+}
+
+.app-container {
+    display: grid; grid-template-columns: 280px 1fr;
+    width: 100%; max-width: 1400px; height: 100vh;
+    margin: 0 auto; background: var(--sidebar-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 50px rgba(0,0,0,0.03);
+}
+
+/* 侧边栏与导航 */
+.sidebar { padding: 40px 30px; display: flex; flex-direction: column; align-items: center; border-right: 1px solid rgba(0,0,0,0.03); }
+.avatar { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+.nav-item { padding: 12px 20px; margin-bottom: 8px; border-radius: 12px; cursor: pointer; transition: 0.3s; display: flex; gap: 12px; color: var(--text-sub); }
+.nav-item:hover, .nav-item.active { background: #fff; color: var(--accent); transform: translateX(5px); }
+
+/* 主体内容 */
+.main-content { background: var(--content-bg); display: flex; flex-direction: column; overflow: hidden; }
+.top-bar { height: 70px; padding: 0 50px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f3f4f6; }
+.view-switcher { display: flex; gap: 10px; background: #f8fafc; padding: 5px; border-radius: 14px; border: 1px solid #e2e8f0; }
+.switch-btn { padding: 8px 24px; border-radius: 10px; border: none; background: transparent; cursor: pointer; font-weight: 600; color: #64748b; }
+.switch-btn.active { background: #fff; color: var(--accent); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+/* 内容排版小类 */
+.scroll-area { flex: 1; overflow-y: auto; padding: 50px 80px; }
+.tag-text { text-transform: uppercase; letter-spacing: 2px; font-size: 12px; color: var(--accent); }
+.description { line-height: 1.8; color: var(--text-sub); font-size: 16px; }
+.blog-banner { width: 100%; height: 200px; border-radius: 24px; background: linear-gradient(135deg, #ffcfd2, #daddff); margin: 20px 0; }
