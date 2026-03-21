@@ -2,7 +2,7 @@
 ---
 
 Hi! Glad you are here. I am an incoming graduate student starting this fall, and I will be working with Prof. Muyi Sun. During my undergrad, I focused on medical image analysis, and I am now exploring a shift toward human-computer interaction.
-When I am not doing research, I am probably listening to music, collecting CDs, watching anime, or planning my next trip. These are also the things that help me relax and stay curious, both in life and in research.
+Besides research, I am probably listening to music, collecting CDs, watching anime, or planning my next trip. These are also the things that help me relax and stay curious, both in life and in research.
 
 Here, I am be sharing my academic journey and research along the way. I will also use this space to jot down interesting questions and thoughts I run into from time to time.
 
