@@ -1,36 +1,36 @@
 /* ============================================================
-   全局变量
+   1. 全局变量
    ============================================================ */
 :root {
-    /* 主色调 */
     --bg-page: linear-gradient(45deg, #fff1f2 0%, #e0f2fe 50%, #fef9c3 100%);
-    --bg-sidebar: #ffffff;      /* 侧边栏：纯白实色，不再是毛玻璃 */
-    --bg-main: #ffffff;         /* 内容区：纯白实色 */
+    
+    /* 💡 核心：带有透明度的暖奶油色，这是“透色”的关键 */
+    --bg-card: rgba(255, 252, 245, 0.7); 
+    
     --accent: #d4a373;          /* 主题金 */
-    
-    /* 文字颜色 */
-    --text-main: #334155;       /* 主文字 */
-    --text-muted: #64748b;      /* 辅助字 */
-    
-    /* 尺寸 */
+    --text-main: #4a3f35;       /* 深褐色文字 */
+    --text-muted: #64748b;      /* 灰色辅助文字 */
+    --bg-content: #fafafa;      /* 内容区背景 */
+
     --sidebar-width: 300px;
-    --hero-height: 220px;       /* 稍微调高一点，毛玻璃更有质感 */
+    --hero-height: 200px;
+    --topbar-height: 70px;
 }
 
 /* ============================================================
-   基础重置
+   2. 基础重置
    ============================================================ */
 * { box-sizing: border-box; }
 body, html {
     margin: 0; padding: 0; height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     background: var(--bg-page);
     color: var(--text-main);
     overflow: hidden;
 }
 
 /* ============================================================
-   核心布局 (App Container)
+   3. 核心布局 (App Container - 毛玻璃效果)
    ============================================================ */
 .app-container {
     display: grid;
@@ -39,12 +39,15 @@ body, html {
     max-width: 1440px;
     height: 100vh;
     margin: 0 auto;
-    background: var(--bg-sidebar); /* 整体背景设为实色 */
-    box-shadow: 0 0 40px rgba(0,0,0,0.05); /* 加个阴影增强层次感 */
+    
+    /* ✨ 关键：保留半透明底色和模糊，使其透出背后的彩色渐变 */
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* ============================================================
-   侧边栏
+   4. 侧边栏 (Sidebar)
    ============================================================ */
 .sidebar {
     padding: 60px 30px;
@@ -52,14 +55,13 @@ body, html {
     flex-direction: column;
     align-items: center;
     border-right: 1px solid rgba(0,0,0,0.05);
-    background: var(--bg-sidebar); 
 }
 
 .avatar {
     width: 110px; height: 110px;
     border-radius: 50%;
     border: 4px solid #fff;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     margin-bottom: 10px;
     object-fit: cover;
 }
@@ -68,34 +70,36 @@ body, html {
 .social-item { width: 100%; display: flex; flex-direction: column; }
 
 .social-btn {
-    display: flex; align-items: center; gap: 10px; padding: 12px 16px;
-    background: #f8fafc; /* 浅灰背景 */
-    border-radius: 12px;
+    display: flex; align-items: center; gap: 10px; padding: 10px 15px;
+    background: #fff;
+    border-radius: 10px;
     text-decoration: none;
     color: var(--text-main);
     font-size: 14px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #eee;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .social-btn:hover {
     background: var(--accent);
     color: #fff;
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
 }
 
 .email-display {
     height: 0; opacity: 0; overflow: hidden;
-    background: #f1f5f9;
-    border-radius: 10px; font-size: 12px; color: var(--accent);
-    text-align: center; transition: all 0.3s;
+    background: rgba(255,255,255,0.5);
+    border-radius: 8px; font-size: 12px; color: var(--accent);
+    text-align: center; word-break: break-all; padding: 0 10px; transition: all 0.3s;
 }
-.email-display.show { padding: 10px; margin-top: 8px; height: auto; opacity: 1; border: 1px solid rgba(212, 163, 115, 0.2); }
+.email-display.show { padding: 8px 10px; margin-top: 8px; border: 1px solid rgba(212, 163, 115, 0.2); }
 
 /* ============================================================
-   右侧主体Banner
+   5. 右侧主体与 0.2 透明度 Banner
    ============================================================ */
 .main-content {
-    background: var(--bg-main);
+    /* ✨ 关键：这里也不要纯白，用透明度使其透色 */
+    background: rgba(255, 255, 255, 0.4); 
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -105,11 +109,10 @@ body, html {
 .hero-banner {
     width: 100%;
     height: var(--hero-height);
-    background-color: #ffffff; /* 💡 纯白底色 */
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    flex-shrink: 0;
     position: relative;
     overflow: hidden;
-    flex-shrink: 0;
-    border-bottom: 1px solid #f1f5f9;
 }
 
 .hero-banner::before {
@@ -119,24 +122,25 @@ body, html {
     background-image: url('../Materials/hero.png'); 
     background-size: cover;
     background-position: center;
-    /* 透明度 */
+    background-repeat: no-repeat;
+    /* ✨ 0.2 透明度 */
     opacity: 0.2; 
     z-index: 1;
 }
 
-/* 顶部导航条 */
 .top-bar {
-    height: 70px;
+    height: var(--topbar-height);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
+    /* ✨ 顶部条保留轻微毛玻璃感 */
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(5px);
     z-index: 10;
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.view-switcher { display: flex; gap: 5px; background: #f1f5f9; padding: 5px; border-radius: 12px; }
+.view-switcher { display: flex; gap: 5px; background: rgba(0,0,0,0.05); padding: 5px; border-radius: 12px; }
 .switch-btn {
     padding: 8px 24px; border: none; background: transparent;
     cursor: pointer; border-radius: 8px; font-weight: 600;
@@ -145,34 +149,32 @@ body, html {
 .switch-btn.active { background: #fff; color: var(--accent); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
 /* ============================================================
-   滚动区与 Markdown
+   6. 滚动内容区
    ============================================================ */
 .scroll-area {
     flex: 1;
     overflow-y: auto;
-    background: #ffffff; /* 确保背景是纯白 */
+    /* ✨ 关键：内容背景也要有通透感，不要死白 */
+    background: rgba(250, 250, 250, 0.4);
 }
 
 .content-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 40px 100px;
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 0 40px 100px;
 }
 
 #render-target { will-change: transform, opacity; }
 
-/* Markdown 样式 */
-.markdown-body { line-height: 1.7; font-size: 16px; color: #1e293b; }
-.markdown-body h1 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px; font-weight: 800; }
-.markdown-body h3 { 
-    color: var(--accent); background: rgba(212, 163, 115, 0.08); 
-    display: inline-block; padding: 4px 12px; border-radius: 8px; margin-top: 30px; 
-}
+.markdown-body { line-height: 1.7; font-size: 16px; color: var(--text-main); }
+.markdown-body h1 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px; font-size: 1.8em; }
+.markdown-body h3 { color: var(--accent); background: rgba(212, 163, 115, 0.1); display: inline-block; padding: 2px 12px; border-radius: 6px; margin-top: 30px; }
 
 /* ============================================================
-   响应式
+   7. 响应式
    ============================================================ */
 @media (max-width: 900px) {
     .app-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
     .sidebar { border-right: none; border-bottom: 1px solid #eee; }
+    .main-content { height: auto; }
 }
