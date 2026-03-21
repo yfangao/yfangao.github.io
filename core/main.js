@@ -4,16 +4,12 @@
  */
 
 const app = {
-    // 初始化启动
     init() {
         this.renderSidebar();
-        // 初始进入时，默认加载首页（Resume）
-        // 确保初始加载也有入场动画
         this.switchTab('home'); 
         this.initGlobalEvents();
     },
 
-    // 渲染左侧边栏基本信息（数据来自根目录 data.js）
     renderSidebar() {
         const avatarEl = document.getElementById('js-avatar');
         const nameEl = document.getElementById('js-name');
