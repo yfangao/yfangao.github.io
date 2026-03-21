@@ -29,31 +29,23 @@ Here, I am be sharing my academic journey and research along the way. I will als
 
 ### 📝 Publications
 
-[1] **SemiTooth: a Generalizable Semi-Supervised Framework for Multi-Source Tooth Segmentation**
-
- Muyi Sun*, *<u>Yifan Gao*</u>*, Ziang Jia, Xingqun Qi, Qianli Zhang, Qian Liu, Tianzheng Deng<sup>†</sup>.  
- 
+[1] **SemiTooth: a Generalizable Semi-Supervised Framework for Multi-Source Tooth Segmentation**<br>
+ Muyi Sun*, *<u>Yifan Gao*</u>*, Ziang Jia, Xingqun Qi, Qianli Zhang, Qian Liu, Tianzheng Deng<sup>†</sup>.<br>
 *International Conference on Acoustics, Speech, and Signal Processing, ICASSP 2026* 
 
-[2] **Self-Evolving Signal Refinement for Semi-Supervised Tooth Segmentation** 
-
-**<u>Yifan Gao*</u>**, Haixu Liu, Shaoliang Luan, Muyi Sun<sup>†</sup>.  
-
+[2] **Self-Evolving Signal Refinement for Semi-Supervised Tooth Segmentation**<br>
+**<u>Yifan Gao*</u>**, Haixu Liu, Shaoliang Luan, Muyi Sun<sup>†</sup>.<br>
 *IEEE International Conference on Network Intelligence and Digital Content, ICNIDC 2025* 
 
-[3] **Exploring Generalizable Distillation for Efficient Medical Image Segmentation** 
-
-Xingqun Qi*, Zhuojie Wu, Wenxuan Zou, Min Ren, *<u>Yifan Gao</u>*, Muyi Sun, Shanghang Zhang, Caifeng Shan , Zhenan Sun<sup>†</sup>. 
-
+[3] **Exploring Generalizable Distillation for Efficient Medical Image Segmentation**<br>
+Xingqun Qi*, Zhuojie Wu, Wenxuan Zou, Min Ren, *<u>Yifan Gao</u>*, Muyi Sun, Shanghang Zhang, Caifeng Shan , Zhenan Sun<sup>†</sup>.<br>
 *IEEE Journal of Biomedical and Health Informatics, JBHI* 
 
 ---
 
 ### 📝 Manuscripts Under Review
-[4] **GapAssistant: Gap Cognition Assistant for Semi-supervised Tooth Structure Segmentation**
-
-**<u>Yifan Gao*</u>**, Qianli Zhang, Yuan Mu, Xingqun Qi, Xiao Xie, Junran Peng, Man Zhang, Pingyi Jia, Muyi Sun<sup>†</sup>.
-
+[4] **GapAssistant: Gap Cognition Assistant for Semi-supervised Tooth Structure Segmentation**<br>
+**<u>Yifan Gao*</u>**, Qianli Zhang, Yuan Mu, Xingqun Qi, Xiao Xie, Junran Peng, Man Zhang, Pingyi Jia, Muyi Sun<sup>†</sup>.<br>
 *IEEE Transactions on Emerging Topics in Computational Intelligence, TETCI* 
 
 ---
