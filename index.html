@@ -2,28 +2,43 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>My Space</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yifan Gao | BUPT AI Hub</title>
     <link rel="stylesheet" href="core/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
+
     <div class="app-container">
         <aside class="sidebar">
             <img id="js-avatar" src="" alt="Avatar" class="avatar">
-            <h2 id="js-name"></h2>
-            <p id="js-subtitle"></p>
-            <nav class="nav-menu" id="js-menu"></nav>
-        </aside>
+            <h2 id="js-name" style="margin: 0; font-size: 22px;"></h2>
+            <p id="js-subtitle" style="font-size: 14px; color: var(--text-sub); text-align: center; margin-top: 10px;"></p>
+            
+            </aside>
 
         <main class="main-content">
             <header class="top-bar">
                 <div class="view-switcher">
-                    <button class="switch-btn active" onclick="app.switchTab('home')">首页</button>
-                    <button class="switch-btn" onclick="app.switchTab('blog')">博文</button>
+                    <button class="switch-btn active" onclick="app.switchTab('home')">
+                        <span>📄</span> Resume
+                    </button>
+                    <button class="switch-btn" onclick="app.switchTab('blog')">
+                        <span>✍️</span> Blog
+                    </button>
                 </div>
             </header>
-            <div class="scroll-area" id="render-target"></div>
+
+            <div class="scroll-area">
+                <div class="hero-banner">
+                    </div>
+
+                <div class="content-wrapper">
+                    <div id="render-target">
+                        </div>
+                </div>
+            </div>
         </main>
     </div>
 
