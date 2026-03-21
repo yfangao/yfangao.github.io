@@ -14,23 +14,21 @@
             <img id="js-avatar" src="" alt="Avatar" class="avatar">
             <h1 id="js-name" style="font-size: 24px; margin: 15px 0 5px;"></h1>
             <p id="js-subtitle" style="font-size: 14px; color: #888; text-align: center; margin-bottom: 20px;"></p>
-
             <div class="social-container" id="js-socials"></div>
         </aside>
 
         <main class="main-content">
             <div class="hero-banner"></div>
-
             <header class="top-bar">
                 <div class="view-switcher">
-                    <button class="switch-btn" id="btn-home" onclick="app.switchTab('home')">首页 / Resume</button>
-                    <button class="switch-btn" id="btn-blog" onclick="app.switchTab('blog')">博文 / Blog</button>
+                    <button class="switch-btn" onclick="app.switchTab('home')">首页 / Resume</button>
+                    <button class="switch-btn" onclick="app.switchTab('blog')">博文 / Blog</button>
                 </div>
             </header>
 
             <div class="scroll-area">
                 <div class="content-wrapper">
-                    <div id="render-target"></div>
+                    <div id="render-target" style="opacity: 0;"></div>
                 </div>
             </div>
         </main>

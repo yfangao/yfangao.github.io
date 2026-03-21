@@ -1,182 +1,42 @@
-/* core/style.css 
-   使用了 CSS 变量，方便你随时调整全局色调
-*/
-
 :root {
-    /* --- 颜色配置区 --- */
-    --bg-gradient: linear-gradient(45deg, #fff1f2 0%, #e0f2fe 50%, #fef9c3 100%);
-    --card-bg: rgba(255, 252, 245, 0.75);
-    --content-bg: #ffffff;
-    --accent-color: #d4a373;   /* 学术金/琥珀色 */
-    --text-primary: #334155;   /* 主文字深灰 */
-    --text-secondary: #64748b; /* 副文字中灰 */
-    --sidebar-width: 300px;
-    --header-height: 70px;
+    --bg-candy: linear-gradient(45deg, #fff1f2 0%, #e0f2fe 50%, #fef9c3 100%);
+    --accent: #d4a373;
+    --text-main: #4a3f35;
 }
 
-/* 全局基础设置 */
-* { box-sizing: border-box; }
-body, html {
-    margin: 0; padding: 0; height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: var(--bg-gradient);
-    color: var(--text-primary);
-    overflow: hidden; /* 禁止全身滚动，使用局部滚动 */
-}
+body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; background: var(--bg-candy); overflow: hidden; }
 
-/* 主容器布局 */
 .app-container {
-    display: grid;
-    grid-template-columns: var(--sidebar-width) 1fr;
-    width: 100%;
-    max-width: 1440px;
-    height: 100vh;
-    margin: 0 auto;
-    background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 0 40px rgba(0,0,0,0.05);
+    display: grid; grid-template-columns: 300px 1fr;
+    width: 100%; max-width: 1440px; height: 100vh; margin: 0 auto;
+    background: rgba(255, 252, 245, 0.7); backdrop-filter: blur(10px);
 }
 
-/* ================= 侧边栏 (名片区) ================= */
-.sidebar {
-    padding: 60px 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-right: 1px solid rgba(0,0,0,0.04);
+/* 侧边栏 */
+.sidebar { padding: 60px 30px; display: flex; flex-direction: column; align-items: center; border-right: 1px solid rgba(0,0,0,0.05); }
+.avatar { width: 110px; height: 110px; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 10px; object-fit: cover;}
+.social-container { width: 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.social-btn { display: flex; align-items: center; gap: 10px; padding: 10px 15px; background: #fff; border-radius: 10px; text-decoration: none; color: var(--text-main); font-size: 14px; border: 1px solid #eee; transition: 0.3s; }
+.social-btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+
+/* 主体区域 */
+.main-content { background: #fff; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+.hero-banner { width: 100%; height: 180px; background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); border-bottom: 1px solid #f3f4f6; flex-shrink: 0; }
+
+.top-bar { height: 70px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(5px); z-index: 10; border-bottom: 1px solid #f3f4f6; }
+.view-switcher { display: flex; gap: 5px; background: #f1f5f9; padding: 5px; border-radius: 12px; }
+.switch-btn { padding: 8px 20px; border: none; background: transparent; cursor: pointer; border-radius: 8px; font-weight: 600; color: #64748b; transition: 0.3s; }
+.switch-btn.active { background: #fff; color: var(--accent); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+/* 内容区 */
+.scroll-area { flex: 1; overflow-y: auto; background: #fafafa; }
+.content-wrapper { max-width: 850px; margin: 40px auto; padding: 0 40px 100px; }
+
+/* 🔴 重要：这里不要加任何 transition，否则会和 GSAP 动画冲突导致生硬 */
+#render-target {
+    will-change: transform, opacity;
 }
 
-.avatar {
-    width: 110px; height: 110px;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    object-fit: cover;
-    margin-bottom: 20px;
-}
-
-#js-name { font-size: 22px; font-weight: 700; margin: 0; }
-#js-subtitle { 
-    font-size: 13px; color: var(--text-secondary); 
-    text-align: center; margin: 10px 0 30px; 
-    line-height: 1.6; white-space: pre-line; 
-}
-
-/* 社交按钮列表 */
-.social-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.social-btn {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    background: #fff;
-    border-radius: 12px;
-    text-decoration: none;
-    color: var(--text-primary);
-    font-size: 14px;
-    border: 1px solid rgba(0,0,0,0.03);
-    transition: all 0.3s ease;
-}
-
-.social-btn:hover {
-    background: var(--accent-color);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(212, 163, 115, 0.3);
-}
-
-/* ================= 右侧内容区 ================= */
-.main-content {
-    background: #fafaf9;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-/* 占位横幅 (视觉中心下移) */
-.hero-banner {
-    width: 100%;
-    height: 160px; /* 调整这个值可以控制内容下移距离 */
-    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    flex-shrink: 0;
-}
-
-/* 顶部导航条 */
-.top-bar {
-    height: var(--header-height);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255,255,255,0.8);
-    backdrop-filter: blur(8px);
-    position: sticky; top: 0; z-index: 10;
-    border-bottom: 1px solid rgba(0,0,0,0.03);
-}
-
-.view-switcher {
-    display: flex;
-    background: #f1f5f9;
-    padding: 5px;
-    border-radius: 14px;
-}
-
-.switch-btn {
-    padding: 8px 25px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-weight: 600;
-    color: var(--text-secondary);
-    border-radius: 10px;
-    transition: 0.3s;
-}
-
-.switch-btn.active {
-    background: #fff;
-    color: var(--accent-color);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-/* 滚动与内容包装 */
-.scroll-area {
-    flex: 1;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-}
-
-.content-wrapper {
-    max-width: 800px; /* 保持学术论文般的阅读宽度 */
-    margin: 40px auto 100px;
-    padding: 0 30px;
-}
-
-/* ================= Markdown 内容样式 ================= */
-.markdown-body { line-height: 1.8; font-size: 16px; }
-.markdown-body h1 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-bottom: 30px; }
-.markdown-body h3 { 
-    color: var(--accent-color); 
-    background: rgba(212, 163, 115, 0.1); 
-    display: inline-block; 
-    padding: 2px 10px; border-radius: 5px;
-    margin-top: 30px;
-}
-.markdown-body a { color: var(--accent-color); text-decoration: none; border-bottom: 1px dashed var(--accent-color); }
-.markdown-body a:hover { border-bottom-style: solid; }
-
-/* 隐藏滚动条但保留功能 */
-.scroll-area::-webkit-scrollbar { width: 6px; }
-.scroll-area::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-
-/* 响应式 */
-@media (max-width: 900px) {
-    .app-container { grid-template-columns: 1fr; height: auto; overflow: auto; }
-    .sidebar { border-right: none; border-bottom: 1px solid #eee; }
-    .main-content { height: auto; }
-    .hero-banner { height: 100px; }
-}
+/* Markdown 样式稍微美化 */
+.markdown-body h1 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px; }
+.markdown-body h3 { color: var(--accent); background: rgba(212, 163, 115, 0.1); display: inline-block; padding: 2px 10px; border-radius: 5px; margin-top: 25px; }
