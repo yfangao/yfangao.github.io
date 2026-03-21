@@ -14,5 +14,5 @@ Beijing, China | 32215300036@e.gzhu.edu.cn
 ---
 
 ### Publications
-1. **SemiTooth: a Generalizable Semi-Supervised Framework for Multi-Source Tooth Segmentation** Muyi Sun, **Yifan Gao**, et al. | *IEEE ICASSP 2026*
-2. **Self-Evolving Signal Refinement for Semi-Supervised Tooth Segmentation** **Yifan Gao**, Haixu Liu, et al. | *IEEE ICNIDC 2025*
+1. **SemiTooth**
+2. **Self**
