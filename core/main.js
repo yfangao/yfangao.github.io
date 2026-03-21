@@ -48,6 +48,7 @@ const app = {
         document.addEventListener('mouseup', (e) => {
             const btn = e.target.closest('.switch-btn');
             if (btn) gsap.to(btn, { scale: 1, duration: 0.4, ease: "elastic.out(1, 0.5)" });
+            
         });
     }
 };

@@ -14,5 +14,5 @@ Beijing, China | 32215300036@e.gzhu.edu.cn
 ---
 
 ### Publications
-1. **SemiTooth**
+1. **SemiT**
 2. **Self**
