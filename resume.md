@@ -1,7 +1,7 @@
 # Yifan Gao (高忆凡)
 
 Hi! Glad you are here. I am an incoming graduate student starting this fall, and I will be working with Prof. Muyi Sun. During my undergrad, I focused on medical image analysis, and I am now exploring a shift toward human-computer interaction.
-Besides research, I am probably listening to music, collecting CDs, watching anime, or planning my next trip. These are also the things that help me relax and stay curious, both in life and in research.
+When I am not doing research, I am probably listening to music, collecting CDs, watching anime, or planning my next trip. These are also the things that help me relax and stay curious, both in life and in research.
 
 Here, I am be sharing my academic journey and research along the way. I will also use this space to jot down interesting questions and thoughts I run into from time to time.
 
@@ -45,7 +45,7 @@ Xingqun Qi*, Zhuojie Wu, Wenxuan Zou, Min Ren, *<u>Yifan Gao</u>*, Muyi Sun, Sha
 
 ### 📝 Manuscripts Under Review
 [4] **GapAssistant: Gap Cognition Assistant for Semi-supervised Tooth Structure Segmentation**<br>
-**<u>Yifan Gao*</u>**, Qianli Zhang, Yuan Mu, Xingqun Qi, Xiao Xie, Junran Peng, Man Zhang, Pingyi Jia, Muyi Sun<sup>†</sup>.<br>
+**<u>Yifan Gao*</u>**, Qianli Zhang*, Yuan Mu*, Xingqun Qi, Xiao Xie, Junran Peng, Man Zhang, Pingyi Jia, Muyi Sun<sup>†</sup>.<br>
 *IEEE Transactions on Emerging Topics in Computational Intelligence, TETCI* 
 
 ---
