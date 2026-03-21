@@ -1,13 +1,11 @@
 // data.js
 const CONFIG = {
     name: "Yifan Gao",
-    subtitle: "BUPT AI Graduate Student",
+    subtitle: "BUPT AI Graduate Student \n Medical Image Segmentation",
     avatar: "./Materials/avatar.png",
     
-    // 项目文件路径
     menu: [
-        { icon: "📄", label: "Resume", id: "home", file: "resume.md" },
-        { icon: "✍️", label: "Blog", id: "blog", file: "posts/blog-01.md" },
-        { icon: "✍️", label: "Blog", id: "blog", file: "posts/blog-02.md" }
+        { id: "home", label: "Resume", file: "resume.md" },
+        { id: "blog", label: "Blog", file: "posts/blog-list.md" }
     ]
 };
