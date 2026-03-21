@@ -1,18 +1,60 @@
-# Yifan Gao (高忆凡)
-Beijing, China | 32215300036@e.gzhu.edu.cn
+# Yifan Gao
+---
+
+Hi! Glad you’re here :) I’m an incoming graduate student starting this fall, and I’ll be working with Prof. Muyi Sun. During my undergrad, I focused on medical image analysis, and I’m now exploring a shift toward human-computer interaction.
+
+When I’m not doing research, I’m probably listening to music, collecting CDs, watching anime, or planning my next trip. These are also the things that help me relax and stay curious, both in life and in research.
+
+Here, I’ll be sharing my academic journey and research along the way. I’ll also use this space to jot down interesting questions and thoughts I run into from time to time.
 
 ---
 
-### Education
-**Beijing University of Posts and Telecommunications (BUPT)** *M.E. in Artificial Intelligence* | 2026 – 2029 (Expected)  
-- **Mentors:** Prof. Muyi Sun
-- **Status:** Recommended for Graduate Admission (推免)
+### 🎓 Education Experience
 
-**Guangzhou University (GZHU)** *B.E. in Information Security* | 2022 – 2026 (Expected)  
-- **GPA:** **3.86 / 4.00** (Ranked **1 / 47**)
+**Beijing University of Posts and Telecommunications (BUPT)**  
+*M.E. in Artificial Intelligence* | 2026 – 2029 (Expected)  
+- Recommended for Graduate Admission  
+- School of Artificial Intelligence  
+
+**Guangzhou University (GZHU)**  
+*B.E. in Information Security* | 2022 – 2026 (Expected)  
+- GPA: **3.86 / 4.00** (Ranked **1 / 47**)  
+- Relevant Coursework: Machine Learning, Computer Vision, Data Mining, Cryptography  
 
 ---
 
-### Publications
-1. **SemiT**
-2. **Self**
+### 📰 News
+
+- **[20xx]** 
+
+---
+
+### 📄 Publications
+
+- **xxxxx**  
+
+---
+
+### 📝 Manuscripts Under Review
+ 
+
+---
+
+### 🏆 Honors and Awards
+
+
+---
+
+### 🛠 Skills
+
+**Programming**  
+- PyTorch, Python, C
+
+### Research Areas
+
+**Medical Image Analysis**  
+- Semi-supervised Learning  
+- Medical Image Segmentation  
+- Multi-source & Cross domain Learing
+ 
+---
