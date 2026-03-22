@@ -45,7 +45,7 @@ Xingqun Qi*, Zhuojie Wu, Wenxuan Zou, Min Ren, *<u>Yifan Gao</u>*, Muyi Sun, Sha
 
 ### 📝 Manuscripts Under Review
 [4] **GapAssistant: Gap Cognition Assistant for Semi-supervised Tooth Structure Segmentation**<br>
-**<u>Yifan Gao*</u>**, Qianli Zhang*, Yuan Mu*, Xingqun Qi, Xiao Xie, Junran Peng, Man Zhang, Pingyi Jia, Muyi Sun<sup>†</sup>.<br>
+*<u>Yifan Gao</u>*, Qianli Zhang, Yuan Mu, Xingqun Qi, Xiao Xie, Junran Peng, Man Zhang, Pingyi Jia, Muyi Sun<sup>†</sup>.<br>
 *IEEE Transactions on Emerging Topics in Computational Intelligence, TETCI* 
 
 ---
