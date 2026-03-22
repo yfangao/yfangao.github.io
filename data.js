@@ -1,6 +1,6 @@
 const CONFIG = {
     name: "Yifan Gao",
-    subtitle: "BUPT AI Graduate Student",
+    subtitle: "A Normal Student ✌",
     avatar: "./Materials/avatar.png",
     
     // socials
