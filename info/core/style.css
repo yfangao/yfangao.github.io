@@ -2,7 +2,7 @@
    1. 全局变量
    ============================================================ */
 :root {
-    --bg-page: #FFFDF7;
+    --bg-page: linear-gradient(160deg, #FFFDF7 0%, #F2EEE6 100%);
     --accent: #37C24C;
     --accent-hover: #2DAF3E;
     --text-main: #34414A;
@@ -57,8 +57,8 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: rgba(255, 255, 255, 0.55);
-    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.04);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.06);
     border-right: 1px solid var(--border);
 }
 
