@@ -2,16 +2,20 @@
    1. 全局变量
    ============================================================ */
 :root {
-    --bg-page: linear-gradient(45deg, #fff1f2 0%, #e0f2fe 50%, #fef9c3 100%);
-    
-    /* 💡 核心：带有透明度的暖奶油色，这是“透色”的关键 */
-    --bg-card: rgba(255, 252, 245, 0.7); 
-    
-    --accent: #d4a373;          /* 主题金 */
-    --text-main: #4a3f35;       /* 深褐色文字 */
-    --text-muted: #64748b;      /* 灰色辅助文字 */
-    --bg-content: #fafafa;      /* 内容区背景 */
-
+    --bg-page: #FFFDF7;
+    --accent: #37C24C;
+    --accent-hover: #2DAF3E;
+    --text-main: #34414A;
+    --text-muted: #6A8497;
+    --border: rgba(0, 0, 0, 0.05);
+    --shadow-neu: 4px 4px 10px rgba(0,0,0,0.05), -4px -4px 10px rgba(255,255,255,0.9);
+    --shadow-card: 0 18px 50px rgba(17,17,17,0.08);
+    --shadow-hover: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.05);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     --sidebar-width: 300px;
     --hero-height: 200px;
 }
@@ -19,17 +23,19 @@
 /* ============================================================
    2. 基础重置
    ============================================================ */
-* { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
 body, html {
     margin: 0; padding: 0; height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: var(--font-sans);
     background: var(--bg-page);
     color: var(--text-main);
     overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* ============================================================
-   3. 核心布局 (App Container - 毛玻璃效果)
+   3. 核心布局 (App Container — 暖色毛玻璃)
    ============================================================ */
 .app-container {
     display: grid;
@@ -38,11 +44,9 @@ body, html {
     max-width: 1440px;
     height: 100vh;
     margin: 0 auto;
-    
-    /* ✨ 关键：保留半透明底色和模糊，使其透出背后的彩色渐变 */
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 253, 247, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 /* ============================================================
@@ -53,52 +57,85 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-right: 1px solid rgba(0,0,0,0.05);
+    border-right: 1px solid var(--border);
 }
 
 .avatar {
     width: 110px; height: 110px;
     border-radius: 50%;
     border: 4px solid #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-neu);
     margin-bottom: 10px;
     object-fit: cover;
+    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.avatar:hover {
+    transform: translateY(-2px);
 }
 
-.social-container { width: 100%; display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+/* ============================================================
+   5. 彩虹渐变文字 — b.ai 标志性效果
+   ============================================================ */
+.rainbow-text {
+    background: linear-gradient(90deg, #F97316, #EC4899, #8B5CF6, #06B6D4, #F97316);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow-shimmer 8s linear infinite;
+}
+
+@keyframes rainbow-shimmer {
+    to { background-position: 300% center; }
+}
+
+/* ============================================================
+   6. 社交按钮
+   ============================================================ */
+.social-container { width: 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
 .social-item { width: 100%; display: flex; flex-direction: column; }
 
 .social-btn {
-    display: flex; align-items: center; gap: 10px; padding: 10px 15px;
+    display: flex; align-items: center; gap: 10px; padding: 12px 16px;
     background: #fff;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     text-decoration: none;
     color: var(--text-main);
-    font-size: 14px;
-    border: 1px solid #eee;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 14px; font-weight: 500;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-neu);
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
 }
 .social-btn:hover {
     background: var(--accent);
     color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent);
+}
+.social-btn:active {
+    transform: scale(0.985) translateY(-2px);
 }
 
 .email-display {
     height: 0; opacity: 0; overflow: hidden;
     background: rgba(255,255,255,0.5);
-    border-radius: 8px; font-size: 12px; color: var(--accent);
-    text-align: center; word-break: break-all; padding: 0 10px; transition: all 0.3s;
+    border-radius: var(--radius-sm);
+    font-size: 12px; color: var(--accent);
+    text-align: center; word-break: break-all;
+    padding: 0 10px; transition: all 0.3s;
 }
-.email-display.show { padding: 8px 10px; margin-top: 8px; border: 1px solid rgba(212, 163, 115, 0.2); }
+.email-display.show {
+    padding: 8px 10px; margin-top: 8px;
+    border: 1px solid rgba(55, 194, 76, 0.2);
+}
 
 /* ============================================================
-   5. 右侧主体与 0.2 透明度 Banner
+   7. 右侧主体 & Hero Banner
    ============================================================ */
 .main-content {
-    /* ✨ 关键：这里也不要纯白，用透明度使其透色 */
-    background: rgba(255, 255, 255, 0.4); 
+    background: rgba(255, 255, 255, 0.35);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -108,7 +145,7 @@ body, html {
 .hero-banner {
     width: 100%;
     height: var(--hero-height);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--border);
     flex-shrink: 0;
     position: relative;
     overflow: hidden;
@@ -118,23 +155,31 @@ body, html {
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('../Materials/hero.png'); 
+    background-image: url('../Materials/hero.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* ✨ 0.2 透明度 */
-    opacity: 0.2; 
+    opacity: 0.2;
     z-index: 1;
 }
 
+.hero-rainbow-line {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #F97316, #EC4899, #8B5CF6, #06B6D4, #F97316);
+    background-size: 300% auto;
+    animation: rainbow-shimmer 8s linear infinite;
+    z-index: 2;
+}
+
 /* ============================================================
-   6. 滚动内容区
+   8. 滚动内容区
    ============================================================ */
 .scroll-area {
     flex: 1;
     overflow-y: auto;
-    /* ✨ 关键：内容背景也要有通透感，不要死白 */
-    background: rgba(250, 250, 250, 0.4);
+    background: rgba(254, 251, 243, 0.4);
 }
 
 .content-wrapper {
@@ -145,15 +190,98 @@ body, html {
 
 #render-target { will-change: transform, opacity; }
 
-.markdown-body { line-height: 1.7; font-size: 16px; color: var(--text-main); }
-.markdown-body h1 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px; font-size: 1.8em; }
-.markdown-body h3 { color: var(--accent); background: rgba(212, 163, 115, 0.1); display: inline-block; padding: 2px 12px; border-radius: 6px; margin-top: 30px; }
+/* ============================================================
+   9. Markdown 内容样式
+   ============================================================ */
+.markdown-body {
+    line-height: 1.7; font-size: 16px; color: var(--text-main);
+}
+.markdown-body h1 {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 10px; margin-bottom: 25px;
+    font-size: 1.8em; color: var(--text-main);
+}
+.markdown-body h2 {
+    color: var(--text-main); margin-top: 32px; margin-bottom: 16px;
+}
+.markdown-body h3 {
+    color: var(--accent);
+    background: rgba(55, 194, 76, 0.08);
+    display: inline-block;
+    padding: 2px 14px; border-radius: var(--radius-sm);
+    margin-top: 30px;
+}
+.markdown-body a {
+    color: var(--accent); text-decoration: none;
+    transition: opacity 150ms ease;
+}
+.markdown-body a:hover { opacity: 0.8; }
+.markdown-body hr {
+    border: none; border-top: 1px solid var(--border);
+    margin: 32px 0;
+}
+.markdown-body blockquote {
+    border-left: 3px solid var(--accent);
+    margin: 16px 0; padding: 8px 20px;
+    background: rgba(55, 194, 76, 0.04);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    color: var(--text-muted);
+}
+.markdown-body ul, .markdown-body ol { padding-left: 24px; }
+.markdown-body li { margin: 6px 0; }
+.markdown-body code {
+    background: rgba(55, 194, 76, 0.08);
+    color: var(--accent);
+    padding: 2px 8px; border-radius: 4px;
+    font-size: 0.9em;
+}
+.markdown-body pre {
+    background: #F5F3EC;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px; overflow-x: auto;
+}
+.markdown-body pre code {
+    background: none; color: var(--text-main);
+    padding: 0; font-size: 0.9em; line-height: 1.6;
+}
+.markdown-body table {
+    width: 100%; border-collapse: collapse;
+    margin: 20px 0; font-size: 0.95em;
+}
+.markdown-body th {
+    background: rgba(55, 194, 76, 0.08);
+    color: var(--accent); font-weight: 600;
+    padding: 12px 16px; text-align: left;
+    border-bottom: 2px solid var(--border);
+}
+.markdown-body td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+}
+.markdown-body img {
+    max-width: 100%; border-radius: var(--radius-md);
+}
 
 /* ============================================================
-   7. 响应式
+   10. 自定义滚动条
+   ============================================================ */
+.scroll-area::-webkit-scrollbar { width: 6px; }
+.scroll-area::-webkit-scrollbar-track { background: transparent; }
+.scroll-area::-webkit-scrollbar-thumb {
+    background: rgba(106, 132, 151, 0.2);
+    border-radius: 3px;
+}
+.scroll-area::-webkit-scrollbar-thumb:hover {
+    background: rgba(106, 132, 151, 0.4);
+}
+
+/* ============================================================
+   11. 响应式
    ============================================================ */
 @media (max-width: 900px) {
     .app-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
-    .sidebar { border-right: none; border-bottom: 1px solid #eee; }
+    .sidebar { border-right: none; border-bottom: 1px solid var(--border); }
     .main-content { height: auto; }
+    .content-wrapper { padding: 0 24px 80px; }
 }
