@@ -14,7 +14,6 @@
 
     --sidebar-width: 300px;
     --hero-height: 200px;
-    --topbar-height: 70px;
 }
 
 /* ============================================================
@@ -127,26 +126,6 @@ body, html {
     opacity: 0.2; 
     z-index: 1;
 }
-
-.top-bar {
-    height: var(--topbar-height);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* ✨ 顶部条保留轻微毛玻璃感 */
-    background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(5px);
-    z-index: 10;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.view-switcher { display: flex; gap: 5px; background: rgba(0,0,0,0.05); padding: 5px; border-radius: 12px; }
-.switch-btn {
-    padding: 8px 24px; border: none; background: transparent;
-    cursor: pointer; border-radius: 8px; font-weight: 600;
-    color: var(--text-muted); transition: 0.3s;
-}
-.switch-btn.active { background: #fff; color: var(--accent); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
 /* ============================================================
    6. 滚动内容区

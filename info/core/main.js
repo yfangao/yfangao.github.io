@@ -2,7 +2,24 @@ const app = {
     init() {
         this.renderProfile();
         this.initGlobalEvents();
-        requestAnimationFrame(() => this.switchTab('home'));
+        requestAnimationFrame(() => this.loadContent('resume.md'));
+    },
+
+    async loadContent(file) {
+        const target = document.getElementById('render-target');
+        if (target.innerHTML !== "") {
+            await gsap.to(target, { opacity: 0, y: 20, duration: 0.2, ease: "power2.in" });
+        }
+        try {
+            const response = await fetch(file);
+            const md = await response.text();
+            target.innerHTML = `<div class="markdown-body">${marked.parse(md)}</div>`;
+            document.querySelector('.scroll-area').scrollTop = 0;
+            gsap.fromTo(target, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.1 });
+        } catch (err) {
+            target.innerHTML = `<p style="text-align:center;padding:40px;">⚠️ 加载失败</p>`;
+            gsap.to(target, { opacity: 1, y: 0 });
+        }
     },
 
     renderProfile() {
@@ -67,32 +84,9 @@ const app = {
         }
     },
 
-    async switchTab(id) {
-        const target = document.getElementById('render-target');
-        const config = CONFIG.menu.find(m => m.id === id);
-        if (!config) return;
-        document.querySelectorAll('.switch-btn').forEach(btn => {
-            const isActive = btn.getAttribute('onclick').includes(`'${id}'`);
-            btn.classList.toggle('active', isActive);
-        });
-        if (target.innerHTML !== "") {
-            await gsap.to(target, { opacity: 0, y: 20, duration: 0.2, ease: "power2.in" });
-        }
-        try {
-            const response = await fetch(config.file);
-            const md = await response.text();
-            target.innerHTML = `<div class="markdown-body">${marked.parse(md)}</div>`;
-            document.querySelector('.scroll-area').scrollTop = 0;
-            gsap.fromTo(target, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.1 });
-        } catch (err) {
-            target.innerHTML = `<p style="text-align:center;padding:40px;">⚠️ 加载失败</p>`;
-            gsap.to(target, { opacity: 1, y: 0 });
-        }
-    },
-
     initGlobalEvents() {
         const handleScale = (e, val) => {
-            const btn = e.target.closest('.switch-btn, .social-btn');
+            const btn = e.target.closest('.social-btn');
             if (btn) gsap.to(btn, { scale: val, duration: 0.2 });
         };
         document.addEventListener('mousedown', (e) => handleScale(e, 0.96));
