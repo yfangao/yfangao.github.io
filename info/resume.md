@@ -15,8 +15,8 @@ Here, I am be sharing my academic journey and research along the way. I will als
 - School of Artificial Intelligence  
 
 **Guangzhou University (GZHU)**  
-*B.E. in Information Security* | 2022 – 2026 (Expected)  
-- GPA: **3.86 / 4.00** (Ranked **1 / 47**)  
+*B.E. in Information Security* | 2022 – 2026
+- Avg Score: **91.99 / 100.00** (Ranked **1 / 45**)  
 - Relevant Coursework: Computer Networks, Data Structures, Operating Systems, Cryptography  
 
 ---
@@ -58,7 +58,6 @@ Xingqun Qi*, Zhuojie Wu, Wenxuan Zou, Min Ren, *<u>Yifan Gao</u>*, Muyi Sun, Sha
 * **First Prize**, Lanqiao Cup (Python Track, Guangdong) <span style="float:right;">*Apr 2025*</span>
 * **First-Class Scholarship**, Guangzhou University <span style="float:right;">*Nov 2024*</span>
 * **First Prize**, Greater Bay Area Financial Math Modeling Competition <span style="float:right;">*Nov 2024*</span>
-* **Third-Class Scholarship**, Guangzhou University <span style="float:right;">*Nov 2023*</span>
 
 ---
 
